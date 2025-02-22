@@ -31,3 +31,7 @@ The dataset is stored in a spreadsheet CSV format for easy access and analysis.
 * Use the provided coordinates for mapping and spatial analysis.
 
 * Explore the additional attributes for deeper insights into the historical, cultural, and environmental context of each record.# data
+
+# Contact
+
+For inquiries regarding larger datasets, custom downloads, or specific format requirements, please contact our team at [admin@dataprovider.uk](mailto:admin@dataprovider.uk). You can also visit our website at [dataprovider.uk](http://dataprovider.uk) for more information and details on our offerings.
