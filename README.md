@@ -1,37 +1,166 @@
-# Overview
-This dataset comprises comprehensive records that include detailed information about various cities, countries, significant dates, organizations, and individuals. Each entry is meticulously verified against Wikidata to ensure accuracy and reliability. The dataset is enriched with additional attributes, offering valuable insights into historical events, cultural significance, geographical coordinates, environmental data, and much more. This makes the dataset highly suitable for geographical analysis, historical research, data-driven decision-making, and academic purposes. By providing a structured and enriched set of data, it aims to be a valuable resource for analysts, researchers, and professionals across various fields.
+# DataProvider Ltd - Datasets & API Documentation
 
-# File Format
-The dataset is stored in a spreadsheet CSV format for easy access and analysis.
-# Data Dictionary
+## Overview
+Welcome to **DataProvider Ltd**, your trusted source for high-quality datasets and API services. Our data solutions provide **verified geographical, historical, organizational, and people data** for researchers, analysts, and developers.
 
-| **Field Name**            | **Data Type** | **Description**                                                                                                                                                                  | **Example**                                                                                                                                                                                                                     |
-|---------------------------|---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **City**                  | String        | The name of the city associated with the record.                                                                                                                               | Andorra la Vella, Santiago, Beijing, Havana                                                                                                                                                                                     |
-| **Country**               | String        | The country in which the city is located.                                                                                                                                       | Andorra, Chile, China, Cuba                                                                                                                                                                                                       |
-| **Title**                 | String        | A title or descriptor for the record, which might refer to an event, landmark, or notable subject related to the city.                                                            | Andorra la Vella, Tajo Abierto, Embassy of Zimbabwe, London, Renminbi                                                                                                                                                             |
-| **Link**                  | URL String    | A hyperlink (typically a Wikipedia URL) that points to a page with detailed information about the title or subject.                                                               | [https://en.wikipedia.org/wiki/Andorra_la_Vella](https://en.wikipedia.org/wiki/Andorra_la_Vella)                                                                                                                                  |
-| **Extracted Years**       | String/List   | One or more years (often comma‑separated) extracted from the text that highlight significant dates or events.                                                                    | "2015" or "2000, 2012"                                                                                                                                                                                                            |
-| **People**                | String        | Names and enriched details of individuals mentioned in the record. This may include additional metadata such as summaries, dates, or other attributes extracted from the text. | full_name: Francisca Valenzuela &#124; summary: Francisca Valenzuela (born March 17, 1987, …)                                                                                                                                     |
-| **Organization**          | String        | Names and enriched details of organizations linked to the record. These might include companies, institutions, or other entities along with additional metadata.             | North-South Carrier or Groupe Latécoère &#124; Description: Aeronautics company &#124; Founded: 1957-01-01T00:00:00Z                                                                                                          |
-| **Locations**             | String        | Additional location names referenced in the record that are not the primary city.                                                                                                  | London, Paris (if mentioned)                                                                                                                                                                                                    |
-| **Coordinates**           | String        | Geographic coordinates provided in a textual format (commonly a WKT “Point(longitude latitude)” string) indicating the physical location of the record.                         | "Point(1.49414 42.5045)" or "Point(-7.216314 39.604008)"                                                                                                                                                                         |
-| **Historical Events**     | String        | A brief reference to any historical events associated with the record.                                                                                                             | Magellan-Elcano expedition, Siege of Bogotá, shipwrecking                                                                                                                                                                         |
-| **Cultural Significance** | String        | Descriptive information about the cultural, social, or historical importance of the city or subject.                                                                              | Andorra la Vella is the capital and largest city of Andorra. It is located high in the east Pyrenees, between France and Spain…                                                                                                 |
-| **Wikipedia Summary**     | String        | A truncated summary of the Wikipedia article that offers an overview of the subject.                                                                                               | Andorra la Vella is the capital and largest city of Andorra. It is located high in the east Pyrenees, between France and Spain…                                                                                                 |
-| **Wikipedia Link**        | URL String    | A direct URL to the full Wikipedia article that provides additional detailed information about the record.                                                                        | [https://en.wikipedia.org/wiki/Andorra_la_Vella](https://en.wikipedia.org/wiki/Andorra_la_Vella)                                                                                                                                  |
-| **Content**               | String        | The main body of text for the record. This field contains detailed narrative information such as history, demographics, and notable facts about the city or subject.           | Andorra la Vella is the capital and largest city of Andorra. It is located high in the east Pyrenees, between France and Spain. As of 2015, the city had a population of 22,886…                                               |
+## Available Datasets
+We offer structured datasets extracted from **reliable sources like Wikidata, OpenStreetMap, and historical archives.**
 
+- **Geographical Data:** Locations, coordinates, and environmental attributes.
+- **Historical Data:** Past events, cultural significance, and timelines.
+- **Organizational Data:** Business records, institutions, and NGOs.
+- **People Data:** Verified profiles with biographical details.
 
+---
 
-# Usage
+## 🔗 API Access
 
-* This enriched dataset provides comprehensive information about locations, people, and organizations, making it valuable for geographical analysis, historical research, data-driven decision-making, academic purposes, and more.
+### **Base URL:**  
+```
+https://dataprovider.uk/api/
+```
 
-* Use the provided coordinates for mapping and spatial analysis.
+Our APIs allow you to extract verified entities, validate dates, and retrieve enriched metadata from **text, images, and PDFs.**  
 
-* Explore the additional attributes for deeper insights into the historical, cultural, and environmental context of each record.# data
+🔹 **[Postman API Collection](https://github.com/dataprovideruk/data/blob/main/postman-api-collection.json)** - Import this into Postman to test APIs.
 
-# Contact
+---
 
-For inquiries regarding larger datasets, custom downloads, or specific format requirements, please contact our team at [admin@dataprovider.uk](mailto:admin@dataprovider.uk). You can also visit our website at [dataprovider.uk](http://dataprovider.uk) for more information and details on our offerings.
+## 📌 API Endpoints
+
+### **1️⃣ Extract Entities**
+- **Endpoint:** `POST /api/extract_entities`
+- **Description:** Extracts and verifies **People, Organizations, and Locations** from text, images, and PDFs.
+- **Request Format (JSON)**:
+  ```json
+  { "text": "Sample text containing entities." }
+  ```
+- **Response:**
+  ```json
+  {
+    "Verified People": ["John Doe", "Jane Smith"],
+    "Verified Organizations": ["Google", "Microsoft"],
+    "Verified Locations": ["London", "New York"]
+  }
+  ```
+- **File Upload Support**: JPG, PNG, and PDF (`multipart/form-data`)
+
+---
+
+### **2️⃣ Extract Dates**
+- **Endpoint:** `POST /api/extract_dates`
+- **Description:** Extracts and validates dates from input data.
+- **Request Format:**
+  ```json
+  { "text": "The event took place on July 4, 1776." }
+  ```
+- **Response:**
+  ```json
+  {
+    "valid_dates": [
+      { "date": "1776", "reason": "Recognized as a historical date" }
+    ]
+  }
+  ```
+- **Error Response:**  
+  ```json
+  { "error": "Invalid input. 'text' key is required." }
+  ```
+
+---
+
+### **3️⃣ Enrich Organization Data**
+- **Endpoint:** `POST /api/organisation_info`
+- **Description:** Fetches additional metadata about an organization.
+- **Request Format:**
+  ```json
+  { "query": "Organisation Name" }
+  ```
+- **Response:**
+  ```json
+  {
+    "organization": {
+      "name": "Organization Name",
+      "metadata": {
+        "linked_companies": ["Company A", "Company B"],
+        "institutions": ["Institution X", "Institution Y"],
+        "additional_info": "Other relevant metadata details"
+      }
+    }
+  }
+  ```
+- **Error Response:**  
+  ```json
+  { "error": "Invalid input. 'query' key is required." }
+  ```
+
+---
+
+### **4️⃣ Person Information**
+- **Endpoint:** `POST /api/person_info`
+- **Description:** Retrieves enriched details for an individual.
+- **Request Format:**
+  ```json
+  { "query": "Person Name here" }
+  ```
+- **Response:**
+  ```json
+  {
+    "person_info": {
+      "name": "Person Name here",
+      "details": "Enriched information such as summaries, dates, and additional metadata"
+    }
+  }
+  ```
+
+---
+
+### **5️⃣ Extract Context**
+- **Endpoint:** `POST /api/extract-context`
+- **Description:** Extracts metadata, entities, and dates from a given **webpage URL**.
+- **Request Format:**
+  ```json
+  { "url": "https://example.com/sample-page" }
+  ```
+- **Response:**
+  ```json
+  {
+    "url": "https://example.com",
+    "Title": "Example Title",
+    "Heading": "Example H1 Heading",
+    "People": {},
+    "Organizations": {
+      "Example Corp": { "context": "Industry-leading company.", "source": "text" }
+    },
+    "Dates": {
+      "2024": { "context": "Event date: 2024", "source": "text" }
+    },
+    "Emails": ["info@example.com"],
+    "Phone Numbers": ["+1 234-567-8901"],
+    "Metadata": {
+      "Canonical URL": "https://example.com",
+      "Meta Description": "This is an example page.",
+      "External Links": ["https://external-site.com"],
+      "Internal Links": ["/about", "/contact"],
+      "Headings": { "H1": ["Example H1 Heading"], "H2": ["Subheading"] }
+    }
+  }
+  ```
+
+---
+
+## 📌 API Authentication
+Currently, our APIs **do not require authentication** for basic access. However, for **high-volume usage or premium datasets**, please contact us for an API key.
+
+---
+
+## 📩 Contact & Support
+For inquiries and partnerships, reach us at:  
+📧 **Email:** [admin@dataprovider.uk](mailto:admin@dataprovider.uk)  
+🌐 **Website:** [DataProvider Ltd](https://dataprovider.uk)  
+
+---
+
+### 🚀 **Contribute**
+We welcome contributions! If you find issues or have suggestions for improvements, feel free to **submit a pull request**.
+
