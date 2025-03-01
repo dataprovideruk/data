@@ -1,0 +1,114 @@
+{
+  "info": {
+    "_postman_id": "12345678-1234-1234-1234-1234567890ab",
+    "name": "DataProvider API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Extract Entities",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"text\": \"Sample text containing entities.\"}"
+        },
+        "url": {
+          "raw": "https://dataprovider.uk/api/extract_entities",
+          "host": ["https://dataprovider.uk"],
+          "path": ["api", "extract_entities"]
+        }
+      }
+    },
+    {
+      "name": "Validate Dates",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"text\": \"The event took place on July 4, 1776.\"}"
+        },
+        "url": {
+          "raw": "https://dataprovider.uk/api/extract_dates",
+          "host": ["https://dataprovider.uk"],
+          "path": ["api", "extract_dates"]
+        }
+      }
+    },
+    {
+      "name": "Enrich Organization Data",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"Organisation Name\"}"
+        },
+        "url": {
+          "raw": "https://dataprovider.uk/api/organisation_info",
+          "host": ["https://dataprovider.uk"],
+          "path": ["api", "organisation_info"]
+        }
+      }
+    },
+    {
+      "name": "Person Information",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"query\": \"Person Name here\"}"
+        },
+        "url": {
+          "raw": "https://dataprovider.uk/api/person_info",
+          "host": ["https://dataprovider.uk"],
+          "path": ["api", "person_info"]
+        }
+      }
+    },
+    {
+      "name": "Extract Context",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"url\": \"https://example.com/sample-page\"}"
+        },
+        "url": {
+          "raw": "https://dataprovider.uk/api/extract-context",
+          "host": ["https://dataprovider.uk"],
+          "path": ["api", "extract-context"]
+        }
+      }
+    }
+  ]
+}
