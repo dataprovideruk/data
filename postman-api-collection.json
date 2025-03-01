@@ -104,7 +104,7 @@
           "raw": "{\"url\": \"https://example.com/sample-page\"}"
         },
         "url": {
-          "raw": "https://dataprovider.uk/api/extract-context",
+          "raw": "https://dataprovider.uk/api/extract_context",
           "host": ["https://dataprovider.uk"],
           "path": ["api", "extract-context"]
         }
