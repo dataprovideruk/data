@@ -4,7 +4,7 @@
 Welcome to **DataProvider Ltd**, your trusted source for high-quality datasets and API services. Our data solutions provide **verified geographical, historical, organizational, and people data** for researchers, analysts, and developers.
 
 ## Available Datasets
-We offer structured datasets extracted from **reliable sources like Wikidata, OpenStreetMap, and historical archives.** Data Dictionary (https://github.com/dataprovideruk/data/blob/main/data-dictionary.md)
+We offer structured datasets extracted from **reliable sources like Wikidata, OpenStreetMap, and historical archives.** [Data Dictionary](https://github.com/dataprovideruk/data/blob/main/data-dictionary.md)
 
 - **Geographical Data:** Locations, coordinates, and environmental attributes.
 - **Historical Data:** Past events, cultural significance, and timelines.
